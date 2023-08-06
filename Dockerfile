@@ -1,4 +1,4 @@
-FROM kong:3.0.0-alpine
+FROM kong:3.3.1-alpine
 
 ENV OIDC_PLUGIN_VERSION=1.3.0-3
 ENV JWT_PLUGIN_VERSION=1.1.0-1
