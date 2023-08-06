@@ -1,4 +1,5 @@
-FROM kong:3.3.1-alpine
+FROM kong:3.3.1-ubuntu
+# FROM alpine
 
 ENV OIDC_PLUGIN_VERSION=1.3.0-3
 ENV JWT_PLUGIN_VERSION=1.1.0-1
@@ -7,7 +8,9 @@ ENV JWT_PLUGIN_VERSION=1.1.0-1
 # ENV LUAROCKS_VERSION=2.4.4-r2
 
 USER root
-RUN apk update && apk add git unzip luarocks
+RUN apt update -y
+RUN apt upgrade -y
+RUN apt install -y git unzip luarocks
 RUN luarocks install kong-oidc
 
 RUN git clone --branch v${OIDC_PLUGIN_VERSION} https://github.com/revomatico/kong-oidc.git
